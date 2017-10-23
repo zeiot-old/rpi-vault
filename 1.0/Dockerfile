@@ -8,7 +8,7 @@ MAINTAINER Nicolas Lamirault <nicolas.lamirault@gmail.com>
 ENV VAULT_VERSION=0.8.3
 
 RUN apt-get update \
-    && apt-get install -y unzip gosu
+    && apt-get install -y unzip gosu dumb-init
 
 ADD https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_arm.zip /vault.zip
 
@@ -29,7 +29,8 @@ VOLUME /vault/config
 
 EXPOSE 8200
 
-COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+#COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+#ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/bin/vault"]
 
 CMD ["server", "-dev"]
