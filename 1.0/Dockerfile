@@ -8,7 +8,7 @@ MAINTAINER Nicolas Lamirault <nicolas.lamirault@gmail.com>
 ENV VAULT_VERSION=0.8.3
 
 RUN apt-get update \
-    && apt-get install -y unzip
+    && apt-get install -y unzip gosu
 
 ADD https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_arm.zip /vault.zip
 
