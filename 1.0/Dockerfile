@@ -1,11 +1,11 @@
-# VERSION 0.8.3
+# VERSION 0.9.5
 # AUTHOR:         Nicolas Lamirault <nicolas.lamirault@gmail.com>
 # DESCRIPTION:    zeiot/rpi-vault
 
 FROM resin/armv7hf-debian:stretch
 MAINTAINER Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
-ENV VAULT_VERSION=0.8.3
+ENV VAULT_VERSION=0.9.5
 
 RUN apt-get update \
     && apt-get install -y unzip gosu dumb-init
@@ -33,4 +33,4 @@ EXPOSE 8200
 #ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 ENTRYPOINT ["/usr/bin/vault"]
 
-CMD ["server", "-dev"]
+CMD ["server"]
