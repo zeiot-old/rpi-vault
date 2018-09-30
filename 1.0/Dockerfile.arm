@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# VERSION 0.10.1
+# VERSION 0.11.1
 # AUTHOR:         Nicolas Lamirault <nicolas.lamirault@gmail.com>
 # DESCRIPTION:    zeiot/rpi-vault
 
@@ -24,7 +24,9 @@ LABEL summary="Vault for ARM" \
       url="https://github.com/zeiot/rpi-vault" \
       maintainer="Nicolas Lamirault <nicolas.lamirault@gmail.com>"
 
-ENV VAULT_VERSION=0.10.1
+ENV VAULT_VERSION=0.11.1
+
+RUN [ "cross-build-start" ]
 
 RUN apt-get update \
     && apt-get install -y unzip gosu dumb-init
@@ -45,6 +47,8 @@ RUN unzip /vault.zip \
 VOLUME /vault/logs
 VOLUME /vault/file
 VOLUME /vault/config
+
+RUN [ "cross-build-end" ]
 
 EXPOSE 8200
 
